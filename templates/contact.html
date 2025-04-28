@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %} About {% endblock %}
+{% block content %}
+
+
+
+ <!-- contact section -->
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Contact Us
+              </h2>
+            </div>
+
+            <form method = "POST" action="{% url 'contact_page' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div>
+                <input name = 'name' type="text" placeholder="Your Name" />
+              </div>
+              <div>
+                <input name = 'phone' type="text" placeholder="Phone Number" />
+              </div>
+              <div>
+                <input name = 'email' type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input name = 'message' type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+
+
+
+
+{% endblock %}

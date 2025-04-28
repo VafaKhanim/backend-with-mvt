@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} About {% endblock %}
+{% block content %}
+
+
+  <!-- blog section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Latest Blog
+        </h2>
+      </div>
+      <div class="row">
+       {%for post in posts%}
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{post.blog_image.url}}" alt="Blog Image">
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{post.title}}
+              </h5>
+              <p>
+                {{post.sub_title}}
+              </p>
+              <a href="{% url 'blog_detail' post.id %}">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </section>
+
+  <!-- end blog section -->
+
+{% endblock %}

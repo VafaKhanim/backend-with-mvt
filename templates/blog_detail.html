@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detalları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .post-image {
+            width: 100%;
+            height: 30vh;
+            object-fit: cover;
+        }
+        .post-content {
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+        .post-title {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .post-subtitle {
+            font-size: 1.2em;
+            color: gray;
+            margin-bottom: 20px;
+        }
+        .post-text {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <img src="{{post.blog_image.url}}" alt="" class="post-image">
+    <div class="post-content">
+        <div class="post-title">{{post.title}}</div>
+        <div class="post-text">
+            <p>{{post.sub_title}}</p>
+            <p>{{post.context}}</p>
+        </div>
+    </div>
+</body>
+</html>
