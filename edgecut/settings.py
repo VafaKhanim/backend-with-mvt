@@ -11,6 +11,30 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # .env faylını yükləyir
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.getenv('DB_NAME', 'db.sqlite3'),
+    }
+}
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,11 +44,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+cgv6sxt1c#*#2*^sy^+o$5*02ahz)x!-$ko9s(i%2yuz116y)'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -42,7 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core.apps.CoreConfig'
 ]
 
 MIDDLEWARE = [
@@ -136,10 +156,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
 
-INSTAGRAM_URL = 'https://www.instagram.com/?locale=az_AZ'
+INSTAGRAM_URL = 'your instagram address'
 TWITTER_URL = 'https://twitter.com/yourusername'
-FACEBOOK_URL = 'https://www.facebook.com/?locale=az_AZ'
-LINKEDIN = 'https://linkedin.com/?locale=az_AZ'
+FACEBOOK_URL = ' your facebook address'
+LINKEDIN = 'your linkedin address'
 
 HOME_URL = 'http://localhost:8000/'
 ABOUT_URL = 'http://localhost:8000/about'
@@ -148,8 +168,8 @@ BLOG_URL = 'http://localhost:8000/blog'
 CONTACT_PAGE_URL = 'http://localhost:8000/contact'
 
 CALL_URL = 'tel:+994501234567'
-MAIL_URL = 'https://mail.google.com/mail/?view=cm&fs=1&to=vafakhanim.h@gmail.com'
-LOCATION_URL = 'https://www.google.com/maps/place/Texnoera+Academy/@40.3835291,49.8080313,17z/data=!3m1!4b1!4m6!3m5!1s0x40307d7c858c8d33:0xe51ced2ed687d883!8m2!3d40.3835291!4d49.8106062!16s%2Fg%2F11s8fnrczx?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D'
+MAIL_URL = 'your email address'
+LOCATION_URL = 'your location'
 
 MEDIA_URL = '/edgecut_media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'edgecut_media')
@@ -159,10 +179,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'edgecut_media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "vfa.xh05@gmail.com"
-EMAIL_HOST_PASSWORD = "fjxv aqbq gada owdk"
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
