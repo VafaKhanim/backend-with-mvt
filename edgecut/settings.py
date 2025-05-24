@@ -46,7 +46,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['51.21.197.203']
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
