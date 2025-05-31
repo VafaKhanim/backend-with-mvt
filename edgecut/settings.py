@@ -49,8 +49,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    "51.21.197.203:8000/",
+    "http://51.21.197.203:8000"
 ]
+
 
 
 HOME_URL = os.getenv('HOME_URL')
