@@ -46,11 +46,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-ALLOWED_HOSTS = ['51.21.197.203']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-]
+CSRF_TRUSTED_ORIGINS = [os.getenv('CSRF_TRUSTED_ORIGINS')]
+
+HOME_URL = os.getenv('HOME_URL')
+ABOUT_URL = os.getenv('ABOUT_URL')
+FURNITURES_URL = os.getenv('FURNITURES_URL')
+BLOG_URL = os.getenv('BLOG_URL')
+CONTACT_PAGE_URL = os.getenv('CONTACT_PAGE_URL')
 
 
 # Application definition
@@ -161,11 +165,6 @@ TWITTER_URL = 'https://twitter.com/yourusername'
 FACEBOOK_URL = ' your facebook address'
 LINKEDIN = 'your linkedin address'
 
-HOME_URL = 'http://localhost:8000/'
-ABOUT_URL = 'http://localhost:8000/about'
-FURNITURES_URL = 'http://localhost:8000/furniture'
-BLOG_URL = 'http://localhost:8000/blog'
-CONTACT_PAGE_URL = 'http://localhost:8000/contact'
 
 CALL_URL = 'tel:+994501234567'
 MAIL_URL = 'your email address'
